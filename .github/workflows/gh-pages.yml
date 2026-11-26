@@ -50,8 +50,7 @@ jobs:
         working-directory: pxt
         run: |
           npm install --legacy-peer-deps
-          npx gulp cli
-          npx gulp webapp
+          npm run build
 
       - name: Install & link pxt-maker dependencies
         working-directory: pxt-maker
@@ -63,7 +62,6 @@ jobs:
           mkdir -p ../pxt-common-packages/node_modules
           ln -sfn ../../pxt ../pxt-common-packages/node_modules/pxt-core
           ln -sfn ../../pxt/node_modules/typescript ../pxt-common-packages/node_modules/typescript
-          npx tsc -p sim
 
       - name: Pull ESP-IDF v5.5.6 Docker image
         run: docker pull espressif/idf:v5.5.6
@@ -72,6 +70,7 @@ jobs:
         working-directory: pxt-maker
         env:
           PXT_FORCE_LOCAL: "1"
+          PXT_SAVE_HEXCACHE: "1"
         run: |
           mkdir -p built/hexcache
           node -e 'const fs=require("fs"); const t=JSON.parse(fs.readFileSync("pxtarget.json","utf8")); t.versions={target:"0.15.80",pxt:"13.3.3"}; t.bundledpkgs={}; fs.writeFileSync("built/target.json", JSON.stringify(t, null, 2));'
@@ -82,11 +81,11 @@ jobs:
         working-directory: pxt-maker
         run: |
           node ../pxt/built/pxt.js staticpkg \
-            --githubpages \
+            --quick \
             --route /pxt-maker \
             --output built/packaged \
             --no-appcache
-          touch built/packaged/.nojekyll
+          touch built/packaged/pxt-maker/.nojekyll
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -94,7 +93,7 @@ jobs:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: pxt-maker/built/packaged
+          path: pxt-maker/built/packaged/pxt-maker
 
   deploy:
     needs: build

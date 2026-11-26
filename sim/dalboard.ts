@@ -172,7 +172,8 @@ namespace pxsim {
                 || this.edgeConnectorState.getPin(getConfig(DAL.CFG_PIN_DOTSTAR_DATA))
                 || this.edgeConnectorState.getPin(getConfig(DAL.CFG_PIN_NEOPIXEL));
 
-            if (!this.neopixelPin && (boardDefinition.visual as BoardImageDefinition)?.leds?.some(l => l.color == "neopixel"))
+            const visualDef = boardDefinition.visual as BoardImageDefinition;
+            if (!this.neopixelPin && visualDef && visualDef.leds && visualDef.leds.some(l => l.color == "neopixel"))
                 this.neopixelPin = this.edgeConnectorState.getPin(getConfig(DAL.CFG_PIN_LED_B))
 
             this.builtinParts["pixels"] = (pin: Pin) => { return this.neopixelState(!!this.neopixelPin && this.neopixelPin.id); };
