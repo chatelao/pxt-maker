@@ -9,6 +9,10 @@ declare namespace _wifi {
     //% promise shim=_wifi::socketConnectTLS
     function socketConnectTLS(fd: int32, host: string, port: int32): int32;
 
+    /** Connect with plain TCP */
+    //% promise shim=_wifi::socketConnectTCP
+    function socketConnectTCP(fd: int32, host: string, port: int32): int32;
+
     /** Write to socket */
     //% promise shim=_wifi::socketWrite
     function socketWrite(fd: int32, data: Buffer): int32;
@@ -66,6 +70,10 @@ declare namespace _wifi {
     /** Get RSSI of current connection or -128 when not connected. */
     //% shim=_wifi::rssi
     function rssi(): int32;
+
+    /** Select external U.FL antenna (true) or onboard ceramic antenna (false). */
+    //% shim=_wifi::setExternalAntenna
+    function setExternalAntenna(external: boolean): void;
 }
 
 // Auto-generated. Do not edit. Really.

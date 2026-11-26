@@ -28,6 +28,7 @@
 * [Misc](/boards/misc)
     * [Robotics Masters Robo HAT MM1 M4](/boards/robotics-masters-robohatmm1-m4)
     * [Espressif ESP32 DevKit-C](/boards/espressif-esp32-devkit-c)
+    * [Seeed Studio XIAO ESP32-C6](/boards/seeed-xiao-esp32c6)
     * [RedBear BLE NANO 2](/boards/redbear-ble-nano)
     * [StichKit](/boards/stitchkit)
     * [Teknikio Bluebird](/boards/teknikio-bluebird)

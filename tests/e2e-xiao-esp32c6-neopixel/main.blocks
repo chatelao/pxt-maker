@@ -1,0 +1,92 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="" id="strip_var">strip</variable>
+  </variables>
+  <block type="pxt-on-start" id="on_start" x="20" y="20">
+    <statement name="HANDLER">
+      <block type="variables_set" id="init_strip">
+        <field name="VAR" id="strip_var" variabletype="">strip</field>
+        <value name="VALUE">
+          <block type="neopixel_create_strip" id="create_ws2812">
+            <value name="pin">
+              <shadow type="pin_picker" id="pin_d2">
+                <field name="PIN">pins.D2</field>
+              </shadow>
+            </value>
+            <value name="numleds">
+              <shadow type="math_number" id="num_leds">
+                <field name="NUM">4</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="forever" id="forever_loop" x="20" y="180">
+    <statement name="HANDLER">
+      <block type="neopixel_set_strip_color" id="set_red">
+        <value name="strip">
+          <block type="variables_get" id="get_strip_1">
+            <field name="VAR" id="strip_var" variabletype="">strip</field>
+          </block>
+        </value>
+        <value name="rgb">
+          <shadow type="colorNumberPicker" id="color_red">
+            <field name="value">0xff0000</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="serial_writeline" id="log_red">
+            <value name="text">
+              <shadow type="text" id="txt_red">
+                <field name="TEXT">NEOPIXEL RED</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="device_pause" id="pause_1">
+                <value name="ms">
+                  <shadow type="math_number" id="ms_1">
+                    <field name="NUM">100</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="neopixel_set_strip_color" id="set_green">
+                    <value name="strip">
+                      <block type="variables_get" id="get_strip_2">
+                        <field name="VAR" id="strip_var" variabletype="">strip</field>
+                      </block>
+                    </value>
+                    <value name="rgb">
+                      <shadow type="colorNumberPicker" id="color_green">
+                        <field name="value">0x00ff00</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="serial_writeline" id="log_green">
+                        <value name="text">
+                          <shadow type="text" id="txt_green">
+                            <field name="TEXT">NEOPIXEL GREEN</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="device_pause" id="pause_2">
+                            <value name="ms">
+                              <shadow type="math_number" id="ms_2">
+                                <field name="NUM">100</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

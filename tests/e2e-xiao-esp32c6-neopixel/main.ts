@@ -1,0 +1,10 @@
+let strip = light.createStrip(pins.D2, 4)
+strip.setBrightness(255)
+forever(function () {
+    strip.setAll(0xff0000)
+    serial.writeLine("NEOPIXEL RED")
+    pause(100)
+    strip.setAll(0x00ff00)
+    serial.writeLine("NEOPIXEL GREEN")
+    pause(100)
+})

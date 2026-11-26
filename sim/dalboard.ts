@@ -80,7 +80,8 @@ namespace pxsim {
                             if (pinList.indexOf(id) < 0) {
                                 pinList.push(id)
                                 if ((DAL.PA02 <= id && id <= DAL.PA11) ||
-                                    (DAL.PB00 <= id && id <= DAL.PB09))
+                                    (DAL.PB00 <= id && id <= DAL.PB09) ||
+                                    (0 <= id && id <= 23))
                                     servos[sublbl] = id;
                             }
                             pinIds[lbl] = id;

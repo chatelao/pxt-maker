@@ -17,6 +17,12 @@
 
 ---
 
+* name: Seeed Studio XIAO ESP32-C6
+* url: /boards/seeed-xiao-esp32c6
+* cardType: template
+
+---
+
 * name: Raspberry Pi Pico RP2040
 * url: /boards/rpi-pico
 * cardType: template

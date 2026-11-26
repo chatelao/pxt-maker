@@ -17,6 +17,7 @@
         "libs/core---samd51",
         "libs/core---esp32",
         "libs/core---esp32s2",
+        "libs/core---esp32c6",
         "libs/screen---st7735",
         "libs/pulse",
         "libs/infrared",
@@ -40,6 +41,7 @@
         "libs/servo",
         "libs/storage",
         "libs/serial",
+        "libs/serial---esp32",
         "libs/datalogger",
         "libs/lightsensor",
         "libs/thermometer",
@@ -100,6 +102,7 @@
         "libs/stitchkit",
         "libs/machachi",
         "libs/espressif-esp32-devkit-c",
+        "libs/seeed-xiao-esp32c6",
         "libs/rpi-pico",
         "libs/jacdac-nrfbrain",
         "libs/jacdac-brain-f4",
@@ -388,6 +391,32 @@
                 "dockerImage": "pext/esp:latest",
                 "dockerArgs": [],
                 "serviceId": "espidf"
+            }
+        },
+        "esp32c6": {
+            "serial": {
+                "useHF2": false,
+                "useEditor": true,
+                "log": true
+            },
+            "compile": {
+                "hasHex": true,
+                "useESP": true,
+                "useUF2": false,
+                "flashCodeAlign": 256,
+                "webUSB": false,
+                "webSerial": true,
+                "espChip": "esp32c6",
+                "espBootloaderOffset": 0,
+                "espFlashAppOffset": 65536,
+                "nativeType": "vm",
+                "stackAlign": 2
+            },
+            "compileService": {
+                "buildEngine": "dockerespidf",
+                "dockerImage": "espressif/idf:v5.5.6",
+                "dockerArgs": [],
+                "serviceId": "espidfc6"
             }
         },
         "rp2040": {

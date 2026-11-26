@@ -1,0 +1,12 @@
+{
+    "name": "xiao-esp32c6-neopixel-e2e",
+    "dependencies": {
+        "seeed-xiao-esp32c6": "file:../../libs/seeed-xiao-esp32c6",
+        "light": "file:../../libs/light"
+    },
+    "description": "Seeed Studio XIAO ESP32-C6 NeoPixel (WS2812B) plugin E2E blocks example",
+    "files": [
+        "main.blocks",
+        "main.ts"
+    ]
+}

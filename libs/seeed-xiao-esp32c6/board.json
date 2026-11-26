@@ -1,0 +1,60 @@
+{
+  "driveDisplayName": "",
+  "visual": {
+    "image": "pkg://board.svg",
+    "useCrocClips": false,
+    "width": 175,
+    "height": 210,
+    "pinDist": 15,
+    "pinBlocks": [
+      { "x": 4.5, "y": 34.5, "labels": ["D0"] },
+      { "x": 4.5, "y": 56.5, "labels": ["D1"] },
+      { "x": 4.5, "y": 78.5, "labels": ["D2"] },
+      { "x": 4.5, "y": 100.5, "labels": ["D3"] },
+      { "x": 4.5, "y": 122.5, "labels": ["D4"] },
+      { "x": 4.5, "y": 144.5, "labels": ["D5"] },
+      { "x": 4.5, "y": 166.5, "labels": ["D6"] },
+      { "x": 155.5, "y": 34.5, "labels": ["_5V"] },
+      { "x": 155.5, "y": 56.5, "labels": ["GND"] },
+      { "x": 155.5, "y": 78.5, "labels": ["_3V"] },
+      { "x": 155.5, "y": 100.5, "labels": ["D10"] },
+      { "x": 155.5, "y": 122.5, "labels": ["D9"] },
+      { "x": 155.5, "y": 144.5, "labels": ["D8"] },
+      { "x": 155.5, "y": 166.5, "labels": ["D7"] }
+    ],
+    "leds": [
+      { "x": 116, "y": 28, "w": 8, "h": 6, "color": "#ffcc00", "label": "LED" }
+    ],
+    "touchPads": [],
+    "buttons": [
+      { "x": 45, "y": 24, "w": 18, "h": 14, "label": "BTN_A" }
+    ]
+  },
+  "gpioPinMap": {
+    "D0": "D0", "A0": "D0",
+    "D1": "D1", "A1": "D1",
+    "D2": "D2", "A2": "D2",
+    "D3": "D3",
+    "D4": "D4", "SDA": "D4",
+    "D5": "D5", "SCL": "D5",
+    "D6": "D6", "TX": "D6",
+    "D7": "D7", "RX": "D7",
+    "D8": "D8", "SCK": "D8",
+    "D9": "D9", "MISO": "D9",
+    "D10": "D10", "MOSI": "D10",
+    "_5V": "_5V", "5V": "_5V",
+    "GND": "GND",
+    "_3V": "_3V", "3V": "_3V", "3V3": "_3V",
+    "LED": "LED",
+    "BTN_A": "BTN_A", "BOOT": "BTN_A"
+  },
+  "groundPins": ["GND"],
+  "threeVoltPins": ["_3V"],
+  "fiveVoltPins": ["_5V"],
+  "i2cPins": {
+    "SDA": "D4",
+    "SCL": "D5"
+  },
+  "onboardComponents": ["buttons"],
+  "marginWhenBreadboarding": [0, 0, 80, 0]
+}

@@ -1,0 +1,33 @@
+{
+    "name": "seeed-xiao-esp32c6",
+    "description": "Support for Seeed Studio XIAO ESP32-C6",
+    "files": [
+        "README.md",
+        "device.d.ts",
+        "config.ts",
+        "board.json",
+        "board.svg"
+    ],
+    "core": true,
+    "compileServiceVariant": "esp32c6",
+    "dependencies": {
+        "core---esp32c6": "file:../core---esp32c6",
+        "buttons": "file:../buttons",
+        "serial---esp32": "file:../serial---esp32",
+        "settings---esp32": "file:../settings---esp32",
+        "wifi---esp32": "file:../wifi---esp32",
+        "mqtt": "file:../mqtt"
+    },
+    "public": true,
+    "weight": 1005,
+    "features": [
+        "pinled",
+        "pind0",
+        "pind1",
+        "buttona",
+        "wifi",
+        "serial",
+        "i2c",
+        "spi"
+    ]
+}
