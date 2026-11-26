@@ -499,6 +499,7 @@
         ],
         "invertedMenu": false,
         "invertedToolbox": false,
+        "coloredToolbox": true,
         "invertedMonaco": false,
         "monacoToolbox": true,
         "highContrast": true,
