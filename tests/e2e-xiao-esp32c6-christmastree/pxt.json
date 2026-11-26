@@ -1,0 +1,12 @@
+{
+    "name": "e2e-xiao-esp32c6-christmastree",
+    "dependencies": {
+        "seeed-xiao-esp32c6": "file:../../libs/seeed-xiao-esp32c6"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "targetVersions": {
+        "target": "0.15.81"
+    }
+}

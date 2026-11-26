@@ -1,0 +1,8 @@
+christmasTree.initTree(TreeType.PCB, 180, true)
+christmasTree.fillSegment(TreeSegment.BoughLow, 0x00ff44)
+christmasTree.fillSegment(TreeSegment.BoughMid, 0xff2222)
+christmasTree.fillSegment(TreeSegment.BoughHigh, 0x2288ff)
+christmasTree.fillSegment(TreeSegment.Stem, 0xff8800)
+christmasTree.fillVirtualSegment(VirtualTreeSegment.StarInner, 0xffd700)
+christmasTree.fillVirtualSegment(VirtualTreeSegment.StarOuter, 0xffffff)
+christmasTree.show()

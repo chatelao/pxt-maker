@@ -1,0 +1,56 @@
+{
+    "christmastree": {
+        "simulationBehavior": "christmastree",
+        "visual": {
+            "builtIn": "christmastree",
+            "width": 150,
+            "height": 244,
+            "pinDistance": 15,
+            "pinLocations": [
+                {
+                    "x": 60,
+                    "y": 0
+                },
+                {
+                    "x": 75,
+                    "y": 0
+                },
+                {
+                    "x": 90,
+                    "y": 0
+                }
+            ]
+        },
+        "numberOfPins": 3,
+        "pinDefinitions": [
+            {
+                "target": "D10",
+                "style": "male",
+                "orientation": "-Z"
+            },
+            {
+                "target": "threeVolt",
+                "style": "male",
+                "orientation": "-Z"
+            },
+            {
+                "target": "ground",
+                "style": "male",
+                "orientation": "-Z"
+            }
+        ],
+        "instantiation": {
+            "kind": "singleton"
+        },
+        "assembly": [
+            {
+                "part": true,
+                "pinIndices": [
+                    0,
+                    1,
+                    2
+                ]
+            }
+        ]
+    }
+}

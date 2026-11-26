@@ -16,7 +16,8 @@
         "serial---esp32": "file:../serial---esp32",
         "settings---esp32": "file:../settings---esp32",
         "wifi---esp32": "file:../wifi---esp32",
-        "mqtt": "file:../mqtt"
+        "mqtt": "file:../mqtt",
+        "christmas-tree": "file:../christmas-tree"
     },
     "public": true,
     "weight": 1005,

@@ -1,0 +1,15 @@
+{
+    "name": "christmas-tree",
+    "version": "0.1.0",
+    "description": "60-LED Tannenbaum PCB (Seeed Studio XIAO ESP32-C6 / RP2040) with segments, coordinates, CIE L* gamma & simulator",
+    "files": [
+        "README.md",
+        "christmas-tree.ts",
+        "pxtparts.json"
+    ],
+    "dependencies": {
+        "core": "file:../core",
+        "light": "file:../light"
+    },
+    "public": true
+}

@@ -179,6 +179,9 @@ namespace pxsim {
             this.builtinParts["pixels"] = (pin: Pin) => { return this.neopixelState(!!this.neopixelPin && this.neopixelPin.id); };
             this.builtinVisuals["pixels"] = () => new visuals.NeoPixelView(parsePinString);
             this.builtinPartVisuals["pixels"] = (xy: visuals.Coord) => visuals.mkNeoPixelPart(xy);
+
+            this.builtinParts["christmastree"] = (pin: Pin) => { return this.neopixelState(pin ? pin.id : 0); };
+            this.builtinVisuals["christmastree"] = () => new visuals.ChristmasTreeView(parsePinString);
         }
 
         kill() {
