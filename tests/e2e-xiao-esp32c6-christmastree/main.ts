@@ -1,8 +1,18 @@
-christmasTree.initTree(TreeType.PCB, 180, true)
-christmasTree.fillSegment(TreeSegment.BoughLow, 0x00ff44)
-christmasTree.fillSegment(TreeSegment.BoughMid, 0xff2222)
-christmasTree.fillSegment(TreeSegment.BoughHigh, 0x2288ff)
-christmasTree.fillSegment(TreeSegment.Stem, 0xff8800)
-christmasTree.fillVirtualSegment(VirtualTreeSegment.StarInner, 0xffd700)
-christmasTree.fillVirtualSegment(VirtualTreeSegment.StarOuter, 0xffffff)
-christmasTree.show()
+christmasTree.initTree(TreeType.PCB, 200, true)
+
+// Test TwinkleFOX engine & palettes
+christmasTree.renderTwinkleTreeAt(15350, TreePalette.Holly, TreePalette.FairyLight, 4, 6, christmasTree.treeColor(TreeColor.BgDarkGreen))
+
+// Test palette interpolation & VirtualSegment direct pixel addressing
+const iceTip = christmasTree.colorFromPalette(TreePalette.Ice, 220, 255, true)
+christmasTree.setVirtualSegmentPixel(VirtualTreeSegment.StarOuter, 2, iceTip)
+
+// Test read-modify-write on shadow buffer + fadeAll + distance LUT
+const tipColor = christmasTree.getPixel(55)
+if (tipColor == 0) {
+    christmasTree.setPixel(55, 0xffffff)
+}
+const distLut = christmasTree.buildEpicenterDistanceLut(TreeEpicenter.Star)
+if (distLut.length == 60) {
+    christmasTree.show()
+}

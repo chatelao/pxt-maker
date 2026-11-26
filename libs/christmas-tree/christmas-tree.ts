@@ -57,7 +57,7 @@ enum TreeButton {
 }
 
 //% color="#2e7d32" weight=88 icon="\uf1bb" block="Christmas Tree"
-//% groups='["Setup", "LEDs", "Segmente", "Geometrie & Farben", "Taster"]'
+//% groups='["Setup", "LEDs", "Segmente", "Twinkle & Paletten", "Taster", "Geometrie & Mathe"]'
 namespace christmasTree {
     export const NUM_PIXELS = 60;
     export const X_MIN = 0.0;
@@ -121,6 +121,9 @@ namespace christmasTree {
     let _btnLastB: boolean = false;
     let _btnEdgeA: number = -50;
     let _btnEdgeB: number = -50;
+    let _btnHandlerA: () => void = null;
+    let _btnHandlerB: () => void = null;
+    let _btnPollerStarted: boolean = false;
 
     function buildCieLuts(): void {
         if (_lutR) return;
@@ -188,6 +191,13 @@ namespace christmasTree {
     }
 
     /**
+     * Gibt den aktuellen Tannenbaum-Typ zurueck.
+     */
+    export function getTreeType(): TreeType {
+        return _treeType;
+    }
+
+    /**
      * Setzt die Helligkeit (0..255).
      */
     //% blockId=xmas_set_brightness
@@ -200,12 +210,19 @@ namespace christmasTree {
     }
 
     /**
+     * Gibt die aktuelle Helligkeit (0..255) zurueck.
+     */
+    export function getBrightness(): number {
+        return _brightness;
+    }
+
+    /**
      * Setzt eine einzelne LED (0..59) im Puffer (noch ohne show()).
      */
     //% blockId=xmas_set_pixel
     //% block="setze LED %index|auf %color=colorNumberPicker"
     //% index.min=0 index.max=59
-    //% group="LEDs" weight=80
+    //% group="LEDs" weight=85
     export function setPixel(index: number, color: number): void {
         ensureTree();
         index = index | 0;
@@ -217,6 +234,36 @@ namespace christmasTree {
         _shadow[phys] = r;
         _shadow[phys + 1] = g;
         _shadow[phys + 2] = b;
+    }
+
+    /**
+     * Liest die unkorrigierte RGB-Farbe einer LED (0..59) aus dem Schattenpuffer (ideal fuer Fades).
+     */
+    //% blockId=xmas_get_pixel
+    //% block="Farbe von LED %index"
+    //% index.min=0 index.max=59
+    //% group="LEDs" weight=80 advanced=true
+    export function getPixel(index: number): number {
+        ensureTree();
+        index = index | 0;
+        if (index < 0 || index >= NUM_PIXELS) return 0;
+        const phys = mapIndex(index) * 3;
+        return (_shadow[phys] << 16) | (_shadow[phys + 1] << 8) | _shadow[phys + 2];
+    }
+
+    /**
+     * Dimmt alle 60 LEDs im Schattenpuffer (scale8: 0 = schwarz, 255 = unveraendert).
+     */
+    //% blockId=xmas_fade_all
+    //% block="alle LEDs abdimmen mit Faktor %scale8"
+    //% scale8.min=0 scale8.max=255 scale8.defl=220
+    //% group="LEDs" weight=78
+    export function fadeAll(scale8: number): void {
+        ensureTree();
+        const s = Math.max(0, Math.min(255, scale8 | 0));
+        for (let i = 0; i < NUM_PIXELS * 3; i++) {
+            _shadow[i] = (_shadow[i] * s) >> 8;
+        }
     }
 
     /**
@@ -311,6 +358,24 @@ namespace christmasTree {
     }
 
     /**
+     * Start-Index eines physischen Segments.
+     */
+    export function segmentStart(segment: TreeSegment): number {
+        const s = segment | 0;
+        if (s < 0 || s >= SEGMENT_STARTS.length) return 0;
+        return SEGMENT_STARTS[s];
+    }
+
+    /**
+     * Exklusiver End-Index eines physischen Segments.
+     */
+    export function segmentEnd(segment: TreeSegment): number {
+        const s = segment | 0;
+        if (s < 0 || s >= SEGMENT_ENDS.length) return 0;
+        return SEGMENT_ENDS[s];
+    }
+
+    /**
      * Faerbt ein virtuelles Segment (inkl. Stern Innen / Stern Aussen, ohne show()).
      */
     //% blockId=xmas_fill_vsegment
@@ -324,6 +389,26 @@ namespace christmasTree {
         for (let k = 0; k < list.length; k++) {
             setPixel(list[k], color);
         }
+    }
+
+    /**
+     * Setzt eine einzelne LED innerhalb eines virtuellen Segments.
+     */
+    //% blockId=xmas_set_vseg_pixel
+    //% block="in %segment|LED an Stelle %offset|setzen auf %color=colorNumberPicker"
+    //% offset.min=0 offset.max=17
+    //% group="Segmente" weight=52
+    export function setVirtualSegmentPixel(segment: VirtualTreeSegment, offset: number, color: number): void {
+        const idx = virtualSegmentPixel(segment, offset);
+        setPixel(idx, color);
+    }
+
+    /**
+     * Liest die Farbe an Position offset innerhalb eines virtuellen Segments.
+     */
+    export function getVirtualSegmentPixel(segment: VirtualTreeSegment, offset: number): number {
+        const idx = virtualSegmentPixel(segment, offset);
+        return getPixel(idx);
     }
 
     /**
@@ -343,7 +428,7 @@ namespace christmasTree {
      */
     //% blockId=xmas_vseg_pixel
     //% block="LED-Index in %segment|an Stelle %offset"
-    //% group="Segmente" weight=45
+    //% group="Segmente" weight=45 advanced=true
     export function virtualSegmentPixel(segment: VirtualTreeSegment, offset: number): number {
         const s = segment | 0;
         if (s < 0 || s >= VSEG_LISTS.length) return 0;
@@ -354,14 +439,64 @@ namespace christmasTree {
     }
 
     /**
+     * Objektorientierter Zugriff auf ein virtuelles Segment (wie VirtualSegment in Python).
+     */
+    export class VirtualSegment {
+        public readonly segment: VirtualTreeSegment;
+        constructor(segment: VirtualTreeSegment) {
+            this.segment = segment;
+        }
+        get length(): number {
+            return virtualSegmentLength(this.segment);
+        }
+        getPixel(offset: number): number {
+            return getVirtualSegmentPixel(this.segment, offset);
+        }
+        setPixel(offset: number, color: number): void {
+            setVirtualSegmentPixel(this.segment, offset, color);
+        }
+        fill(color: number): void {
+            fillVirtualSegment(this.segment, color);
+        }
+    }
+
+    export function virtualSegment(segment: VirtualTreeSegment): VirtualSegment {
+        return new VirtualSegment(segment);
+    }
+
+    /**
      * Konvertiert HSV (je 0..255) in eine RGB-Farbe.
      */
     //% blockId=xmas_hsv_rgb
     //% block="Farbe aus Farbton %h|Saettigung %s|Wert %v"
     //% h.min=0 h.max=255 s.min=0 s.max=255 s.defl=255 v.min=0 v.max=255 v.defl=255
-    //% group="Geometrie & Farben" weight=40
+    //% group="Twinkle & Paletten" weight=38
     export function hsvToRgb(h: number, s: number, v: number): number {
         return light.hsv(h & 0xff, s & 0xff, v & 0xff);
+    }
+
+    /**
+     * Skaliert eine RGB-Farbe mit brightness8 (0..255).
+     */
+    export function applyBrightness(rgb: number, brightness8: number): number {
+        const bScale = Math.max(0, Math.min(255, brightness8 | 0));
+        if (bScale >= 255) return rgb;
+        if (bScale <= 0) return 0;
+        const r = (((rgb >> 16) & 0xff) * bScale) >> 8;
+        const g = (((rgb >> 8) & 0xff) * bScale) >> 8;
+        const b = ((rgb & 0xff) * bScale) >> 8;
+        return (r << 16) | (g << 8) | b;
+    }
+
+    /**
+     * Wendet CIE-L* + Weissabgleich (255, 176, 240) auf eine einzelne RGB-Farbe an.
+     */
+    export function gammaCorrect(rgb: number): number {
+        buildCieLuts();
+        const r = _lutR[(rgb >> 16) & 0xff];
+        const g = _lutG[(rgb >> 8) & 0xff];
+        const b = _lutB[rgb & 0xff];
+        return (r << 16) | (g << 8) | b;
     }
 
     /**
@@ -370,7 +505,7 @@ namespace christmasTree {
     //% blockId=xmas_pixel_x
     //% block="X (mm) von LED %index"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=35
+    //% group="Geometrie & Mathe" weight=35 advanced=true
     export function pixelX(index: number): number {
         const i = index | 0;
         if (i < 0 || i >= NUM_PIXELS) return 0;
@@ -383,7 +518,7 @@ namespace christmasTree {
     //% blockId=xmas_pixel_y
     //% block="Y (mm) von LED %index"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=34
+    //% group="Geometrie & Mathe" weight=34 advanced=true
     export function pixelY(index: number): number {
         const i = index | 0;
         if (i < 0 || i >= NUM_PIXELS) return 0;
@@ -396,7 +531,7 @@ namespace christmasTree {
     //% blockId=xmas_norm_x
     //% block="Norm-X (0..1) von LED %index"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=32
+    //% group="Geometrie & Mathe" weight=32
     export function normX(index: number): number {
         const i = index | 0;
         if (i < 0 || i >= NUM_PIXELS) return 0;
@@ -409,7 +544,7 @@ namespace christmasTree {
     //% blockId=xmas_norm_y
     //% block="Norm-Y (0..1) von LED %index"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=31
+    //% group="Geometrie & Mathe" weight=31
     export function normY(index: number): number {
         const i = index | 0;
         if (i < 0 || i >= NUM_PIXELS) return 0;
@@ -422,7 +557,7 @@ namespace christmasTree {
     //% blockId=xmas_distance_to
     //% block="Abstand (mm) von LED %index|zu %epicenter"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=30
+    //% group="Geometrie & Mathe" weight=30
     export function distanceTo(index: number, epicenter: TreeEpicenter): number {
         const i = index | 0;
         const e = epicenter | 0;
@@ -433,12 +568,45 @@ namespace christmasTree {
     }
 
     /**
+     * Euklidischer Abstand (in mm) der LED zu einem beliebigen Punkt (xMm, yMm).
+     */
+    export function distanceToPoint(index: number, xMm: number, yMm: number): number {
+        const i = index | 0;
+        if (i < 0 || i >= NUM_PIXELS) return 0;
+        const dx = PIXEL_X[i] - xMm;
+        const dy = PIXEL_Y[i] - yMm;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    /**
+     * Berechnet einmalig ein 60er Array der Abstaende (in mm) zu einem Punkt (xMm, yMm).
+     */
+    export function buildDistanceLut(xMm: number, yMm: number): number[] {
+        const out: number[] = [];
+        for (let i = 0; i < NUM_PIXELS; i++) {
+            const dx = PIXEL_X[i] - xMm;
+            const dy = PIXEL_Y[i] - yMm;
+            out.push(Math.sqrt(dx * dx + dy * dy));
+        }
+        return out;
+    }
+
+    /**
+     * Berechnet einmalig ein 60er Array der Abstaende (in mm) zu einem Epicenter.
+     */
+    export function buildEpicenterDistanceLut(epicenter: TreeEpicenter): number[] {
+        const e = epicenter | 0;
+        if (e < 0 || e >= EPICENTER_X.length) return buildDistanceLut(0, 0);
+        return buildDistanceLut(EPICENTER_X[e], EPICENTER_Y[e]);
+    }
+
+    /**
      * Polarwinkel (in Radiant, -pi..pi) der LED relativ zu einem Referenzpunkt.
      */
     //% blockId=xmas_polar_angle
     //% block="Winkel (rad) von LED %index|um %epicenter"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=28
+    //% group="Geometrie & Mathe" weight=28 advanced=true
     export function polarAngle(index: number, epicenter: TreeEpicenter): number {
         const i = index | 0;
         const e = epicenter | 0;
@@ -452,7 +620,7 @@ namespace christmasTree {
     //% blockId=xmas_pixel_segment
     //% block="Segment-ID von LED %index"
     //% index.min=0 index.max=59
-    //% group="Geometrie & Farben" weight=26
+    //% group="Geometrie & Mathe" weight=26 advanced=true
     export function pixelSegment(index: number): number {
         const i = index | 0;
         if (i < 0 || i >= NUM_PIXELS) return 0;
@@ -509,5 +677,33 @@ namespace christmasTree {
             _btnLastB = curr;
         }
         return justPressed;
+    }
+
+    /**
+     * Fuehrt Code aus, sobald Taster A (D5) oder Taster B (D6) gedrueckt wird (entprellt).
+     */
+    //% blockId=xmas_on_btn_pressed
+    //% block="wenn %btn gedrueckt wird"
+    //% group="Taster" weight=22
+    export function onButtonPressed(btn: TreeButton, handler: () => void): void {
+        if (btn == TreeButton.A) {
+            _btnHandlerA = handler;
+        } else {
+            _btnHandlerB = handler;
+        }
+        if (!_btnPollerStarted) {
+            _btnPollerStarted = true;
+            control.runInBackground(function () {
+                while (true) {
+                    if (_btnHandlerA && buttonWasPressed(TreeButton.A)) {
+                        _btnHandlerA();
+                    }
+                    if (_btnHandlerB && buttonWasPressed(TreeButton.B)) {
+                        _btnHandlerB();
+                    }
+                    basic.pause(15);
+                }
+            });
+        }
     }
 }

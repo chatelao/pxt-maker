@@ -5,6 +5,7 @@
     "files": [
         "README.md",
         "christmas-tree.ts",
+        "palettes.ts",
         "pxtparts.json"
     ],
     "dependencies": {
