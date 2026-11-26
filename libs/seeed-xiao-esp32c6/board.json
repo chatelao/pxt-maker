@@ -23,11 +23,11 @@
       { "x": 155.5, "y": 166.5, "labels": ["D7"] }
     ],
     "leds": [
-      { "x": 116, "y": 28, "w": 8, "h": 6, "color": "#ffcc00", "label": "LED" }
+      { "x": 139, "y": 37, "w": 8, "h": 4.5, "color": "#ffcc00", "label": "LED" }
     ],
     "touchPads": [],
     "buttons": [
-      { "x": 45, "y": 24, "w": 18, "h": 14, "label": "BTN_A" }
+      { "x": 135, "y": 20, "w": 14, "h": 12, "label": "BTN_A" }
     ]
   },
   "gpioPinMap": {
