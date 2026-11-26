@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="500" height="375">
+  <rect width="320" height="240" fill="#ffffff"/>
+  <g transform="translate(72.5, 15)">
+    <!-- Black XIAO PCB -->
+    <rect x="7" y="18" width="161" height="186" rx="14" fill="#141619" stroke="#2a2e35" stroke-width="1.5"/>
+
+    <!-- USB-C Connector (top center) -->
+    <rect x="61" y="3" width="53" height="33" rx="5" fill="#dfe2e6" stroke="#a6acb5" stroke-width="1.2"/>
+    <rect x="64" y="3" width="47" height="28" rx="4" fill="#ebedf0"/>
+    <rect x="72" y="21" width="10" height="3.5" rx="1" fill="#b7bdc6"/>
+    <rect x="93" y="21" width="10" height="3.5" rx="1" fill="#b7bdc6"/>
+    <!-- USB-C SMD pads -->
+    <g fill="#d4af37">
+      <rect x="67" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="71.5" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="76" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="80.5" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="85" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="89.5" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="94" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="98.5" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="103" y="36" width="2.2" height="4" rx="0.5"/>
+      <rect x="107.5" y="36" width="2.2" height="4" rx="0.5"/>
+    </g>
+
+    <!-- Reset Button (R, top-left) -->
+    <rect x="26" y="20" width="14" height="12" rx="2" fill="#bfc5ce" stroke="#7d8590" stroke-width="0.8"/>
+    <circle cx="33" cy="26" r="3.4" fill="#2c3038"/>
+    <circle cx="33" cy="26" r="1.4" fill="#525866"/>
+    <text x="44" y="30" font-family="sans-serif" font-weight="bold" font-size="9" fill="#f0f2f5">R</text>
+
+    <!-- Boot Button (B, top-right) -->
+    <rect x="135" y="20" width="14" height="12" rx="2" fill="#bfc5ce" stroke="#7d8590" stroke-width="0.8"/>
+    <circle cx="142" cy="26" r="3.4" fill="#2c3038"/>
+    <circle cx="142" cy="26" r="1.4" fill="#525866"/>
+    <text x="131" y="30" font-family="sans-serif" font-weight="bold" font-size="9" fill="#f0f2f5" text-anchor="end">B</text>
+
+    <!-- PWR LED (left) -->
+    <rect x="27" y="37" width="8" height="4.5" rx="0.8" fill="#d0d7de"/>
+    <rect x="29" y="37.6" width="4" height="3.3" rx="0.4" fill="#e53935"/>
+    <text x="31" y="49" font-family="sans-serif" font-weight="bold" font-size="5.5" fill="#d0d7de" text-anchor="middle">PWR</text>
+
+    <!-- USER LED (right) -->
+    <rect x="139" y="37" width="8" height="4.5" rx="0.8" fill="#d0d7de"/>
+    <rect x="141" y="37.6" width="4" height="3.3" rx="0.4" fill="#f5c518"/>
+    <text x="143" y="49" font-family="sans-serif" font-weight="bold" font-size="5.5" fill="#d0d7de" text-anchor="middle">USER</text>
+
+    <!-- Left & Right Castellated Gold Pads with White Drill Holes -->
+    <g fill="#f0c419" stroke="#b8900b" stroke-width="0.8">
+      <rect x="4" y="36" width="16" height="12" rx="6"/><circle cx="12" cy="42" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="4" y="58" width="16" height="12" rx="6"/><circle cx="12" cy="64" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="4" y="80" width="16" height="12" rx="6"/><circle cx="12" cy="86" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="4" y="102" width="16" height="12" rx="6"/><circle cx="12" cy="108" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="4" y="124" width="16" height="12" rx="6"/><circle cx="12" cy="130" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="4" y="146" width="16" height="12" rx="6"/><circle cx="12" cy="152" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="4" y="168" width="16" height="12" rx="6"/><circle cx="12" cy="174" r="3.6" fill="#ffffff" stroke="none"/>
+
+      <rect x="155" y="36" width="16" height="12" rx="6"/><circle cx="163" cy="42" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="155" y="58" width="16" height="12" rx="6"/><circle cx="163" cy="64" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="155" y="80" width="16" height="12" rx="6"/><circle cx="163" cy="86" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="155" y="102" width="16" height="12" rx="6"/><circle cx="163" cy="108" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="155" y="124" width="16" height="12" rx="6"/><circle cx="163" cy="130" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="155" y="146" width="16" height="12" rx="6"/><circle cx="163" cy="152" r="3.6" fill="#ffffff" stroke="none"/>
+      <rect x="155" y="168" width="16" height="12" rx="6"/><circle cx="163" cy="174" r="3.6" fill="#ffffff" stroke="none"/>
+    </g>
+
+    <!-- Center White Silkscreen Label -->
+    <rect x="31" y="55" width="113" height="114" rx="2.5" fill="#ffffff"/>
+    <text x="87.5" y="75" font-family="sans-serif" font-weight="bold" font-size="13.5" fill="#111111" text-anchor="middle" letter-spacing="-0.3">seeed studio</text>
+    <text x="87.5" y="92" font-family="sans-serif" font-size="8.2" fill="#222222" text-anchor="middle">Model: XIAO-ESP32-C6</text>
+    <text x="87.5" y="105" font-family="sans-serif" font-size="7.6" fill="#222222" text-anchor="middle">FCC ID: Z4T-XIAOESP32C6</text>
+    <!-- FC & CE Marks -->
+    <text x="64" y="144" font-family="sans-serif" font-weight="bold" font-size="24" fill="#111111" text-anchor="middle" letter-spacing="-2">FC</text>
+    <text x="111" y="144" font-family="sans-serif" font-weight="bold" font-size="24" fill="#111111" text-anchor="middle" letter-spacing="-1">CE</text>
+
+    <!-- U.FL / IPEX Antenna Connector (bottom-left) -->
+    <rect x="33" y="177" width="18" height="18" rx="3" fill="#f5f5f5" stroke="#d0d7de" stroke-width="0.8"/>
+    <circle cx="42" cy="186" r="6" fill="#f0c419" stroke="#c79e0c" stroke-width="0.8"/>
+    <circle cx="42" cy="186" r="3.8" fill="#ffffff"/>
+    <circle cx="42" cy="186" r="1.8" fill="#d4af37"/>
+
+    <!-- Ceramic Chip Antenna (bottom-right) -->
+    <rect x="92" y="180" width="46" height="13" rx="1.5" fill="#8b845e" stroke="#666042" stroke-width="0.8"/>
+    <rect x="95" y="183.5" width="6" height="6" rx="0.8" fill="#1a1d24"/>
+  </g>
+</svg>

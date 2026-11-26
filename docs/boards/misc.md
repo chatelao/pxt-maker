@@ -20,6 +20,7 @@
 * name: Seeed Studio XIAO ESP32-C6
 * url: /boards/seeed-xiao-esp32c6
 * cardType: template
+* imageUrl: /static/libs/seeed-xiao-esp32c6.svg
 
 ---
 
