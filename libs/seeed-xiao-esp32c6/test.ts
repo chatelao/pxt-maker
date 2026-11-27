@@ -95,4 +95,30 @@ bluetooth.onAdvertisementReceived((data, rssi) => {
 bluetooth.startScanning();
 bluetooth.stopScanning();
 
+// 12. Thread (IEEE 802.15.4 / OpenThread) Mesh Intercomm
+thread.onReceivedString((topic, message) => {
+    serial.writeLine("THREAD: " + topic + "=" + message);
+});
+thread.onReceivedValue((name, value) => {
+    serial.writeValue("th_" + name, value);
+});
+thread.joinGroup(15, 0x1234, "MakeCodeThread");
+thread.sendString("sensors", "ok");
+thread.sendValue("lux", 420);
+
+// 13. Zigbee 3.0 (IEEE 802.15.4) Mesh & Home Automation
+zigbee.onJoined(() => {
+    zigbee.reportTemperature(24.5);
+});
+zigbee.onReceivedString((msg) => {
+    serial.writeLine("ZIGBEE: " + msg);
+});
+zigbee.onSwitchChanged((on) => {
+    pins.LED.digitalWrite(!on);
+});
+zigbee.startNetwork(ZigbeeRole.Router, 15);
+zigbee.sendString("zb-hello");
+zigbee.setSwitch(true);
+
+
 

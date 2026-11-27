@@ -63,6 +63,8 @@
         "libs/net-game",
         "libs/wifi---esp32",
         "libs/bluetooth---esp32",
+        "libs/thread---esp32c6",
+        "libs/zigbee---esp32c6",
         "libs/mqtt",
         "libs/azureiot",
         "libs/settings",
