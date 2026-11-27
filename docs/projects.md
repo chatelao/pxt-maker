@@ -30,7 +30,7 @@
     {
         "name": "Misc",
         "url": "/boards/misc",
-        "imageUrl": "/static/libs/robotics-masters-robohatmm1-m4.jpg"
+        "imageUrl": "/static/libs/seeed-xiao-esp32c6.svg"
     },
     {
         "name": "Digital IO",

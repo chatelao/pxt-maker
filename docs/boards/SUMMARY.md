@@ -29,6 +29,7 @@
     * [Robotics Masters Robo HAT MM1 M4](/boards/robotics-masters-robohatmm1-m4)
     * [Espressif ESP32 DevKit-C](/boards/espressif-esp32-devkit-c)
     * [Seeed Studio XIAO ESP32-C6](/boards/seeed-xiao-esp32c6)
+    * [Raspberry Pi Pico RP2040](/boards/rpi-pico)
     * [Raspberry Pi Pico 2 (RP2350)](/boards/rpi-pico2)
     * [Raspberry Pi Pico 2 W (RP2350)](/boards/rpi-pico2-w)
     * [RedBear BLE NANO 2](/boards/redbear-ble-nano)

@@ -1,6 +1,6 @@
 {
     "name": "rpi-pico",
-    "description": "Support for Raspberry Pi Pico RP2040 - beta",
+    "description": "Support for Raspberry Pi Pico RP2040",
     "files": [
         "README.md",
         "device.d.ts",
@@ -14,6 +14,7 @@
         "core---rp2040": "file:../core---rp2040"
     },
     "public": true,
+    "weight": 1004,
     "features": [
         "pinled",
         "pind0",

@@ -463,8 +463,8 @@
             "compileService": {
                 "codalTarget": {
                     "name": "codal-pi-pico2",
-                    "url": "https://github.com/lancaster-university/codal-pi-pico",
-                    "branch": "v0.0.10",
+                    "url": "https://github.com/chatelao/codal-pi-pico2",
+                    "branch": "v0.0.1",
                     "type": "git"
                 },
                 "codalBinary": "PI-PICO2",

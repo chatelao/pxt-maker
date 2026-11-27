@@ -4,19 +4,6 @@
 
 ### ~ codecard
 
-* name: Robotics Masters Robo HAT MM1 M4
-* url: /boards/robotics-masters-robohatmm1-m4
-* imageUrl: /static/libs/robotics-masters-robohatmm1-m4.jpg
-
----
-
-* name: Espressif ESP32 DevKit-C
-* url: /boards/espressif-esp32-devkit-c
-* cardType: template
-* imageUrl: /static/libs/espressif-esp32-devkit-c.jpg
-
----
-
 * name: Seeed Studio XIAO ESP32-C6
 * url: /boards/seeed-xiao-esp32c6
 * cardType: template
@@ -34,14 +21,27 @@
 * name: Raspberry Pi Pico 2 (RP2350)
 * url: /boards/rpi-pico2
 * cardType: template
-* imageUrl: /static/libs/rpi-pico2.svg
+* imageUrl: /static/libs/rpi-pico2.jpg
 
 ---
 
 * name: Raspberry Pi Pico 2 W (RP2350)
 * url: /boards/rpi-pico2-w
 * cardType: template
-* imageUrl: /static/libs/rpi-pico2-w.svg
+* imageUrl: /static/libs/rpi-pico2-w.jpg
+
+---
+
+* name: Robotics Masters Robo HAT MM1 M4
+* url: /boards/robotics-masters-robohatmm1-m4
+* imageUrl: /static/libs/robotics-masters-robohatmm1-m4.jpg
+
+---
+
+* name: Espressif ESP32 DevKit-C
+* url: /boards/espressif-esp32-devkit-c
+* cardType: template
+* imageUrl: /static/libs/espressif-esp32-devkit-c.jpg
 
 ---
 

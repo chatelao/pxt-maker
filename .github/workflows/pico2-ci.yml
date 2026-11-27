@@ -39,6 +39,11 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Install ARM GCC toolchain for RP2350
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib cmake python-is-python3
+
       - name: Install & build pxt
         working-directory: pxt
         run: |
@@ -65,7 +70,13 @@ jobs:
           cp node_modules/pxt-common-packages/built/common-sim.d.ts built/common-sim.d.ts
           node_modules/.bin/tsc -p sim
 
-      - name: Run Pico 2 & Pico 2 W E2E Emulation Tests
+      - name: Prepare built/target.json for native RP2350 builds
         working-directory: pxt-maker
         run: |
-          node tests/e2e-pico2.js --skip-native
+          node -e 'const fs=require("fs"); const t=JSON.parse(fs.readFileSync("pxtarget.json","utf8")); t.versions={target:"0.15.80",pxt:"13.3.3"}; t.bundledpkgs={}; fs.writeFileSync("built/target.json", JSON.stringify(t, null, 2));'
+
+      - name: Run Pico 2 & Pico 2 W E2E Emulation + Native UF2 Tests
+        working-directory: pxt-maker
+        run: |
+          node tests/e2e-pico2.js
+          node tests/pico2-verify.js

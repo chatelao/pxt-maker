@@ -1,33 +1,173 @@
-<svg viewBox="0 0 209 119" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 210" width="510" height="210">
   <!-- Green Raspberry Pi Pico 2 W PCB -->
-  <path d="M203.636 14.872C203.636 6.664 196.973 0 188.764 0H14.871C6.663 0 0 6.664 0 14.872v88.676c0 8.208 6.663 14.872 14.871 14.872h173.893c8.209 0 14.872-6.664 14.872-14.872V14.872z" fill="#177a00"/>
-  <!-- CYW43439 RF Metal Shield (left/wireless side) -->
-  <rect x="38" y="31" width="40" height="56" rx="3" fill="#c9ced6" stroke="#8b949e" stroke-width="1.2"/>
-  <rect x="41" y="34" width="34" height="50" rx="2" fill="#dfe3e8"/>
-  <text x="58" y="57" font-family="sans-serif" font-weight="bold" font-size="6.2" fill="#374151" text-anchor="middle">Pico 2 W</text>
-  <text x="58" y="67" font-family="sans-serif" font-size="4.8" fill="#4b5563" text-anchor="middle">CYW43439</text>
-  <!-- RP2350 Dual Cortex-M33 SoC (center) -->
-  <rect x="86" y="40" width="38" height="38" rx="2.5" fill="#1b1e23" stroke="#343942" stroke-width="1"/>
-  <circle cx="91" cy="45" r="1.4" fill="#888"/>
-  <text x="105" y="57" font-family="sans-serif" font-weight="bold" font-size="6.8" fill="#e6edf3" text-anchor="middle">RP2350</text>
-  <text x="105" y="67" font-family="sans-serif" font-size="5.2" fill="#9ca3af" text-anchor="middle">Pico 2 W</text>
+  <rect x="8" y="2" width="500" height="206" rx="8" fill="#0f6a36" stroke="#094a24" stroke-width="1.5"/>
+
+  <!-- 4 Corner M2 Mounting Holes -->
+  <g>
+    <circle cx="20" cy="40" r="9.5" fill="#d4af37" stroke="#9e7f1a" stroke-width="0.8"/>
+    <circle cx="20" cy="40" r="5.5" fill="#ffffff"/>
+    <circle cx="20" cy="170" r="9.5" fill="#d4af37" stroke="#9e7f1a" stroke-width="0.8"/>
+    <circle cx="20" cy="170" r="5.5" fill="#ffffff"/>
+    <circle cx="496" cy="40" r="9.5" fill="#d4af37" stroke="#9e7f1a" stroke-width="0.8"/>
+    <circle cx="496" cy="40" r="5.5" fill="#ffffff"/>
+    <circle cx="496" cy="170" r="9.5" fill="#d4af37" stroke="#9e7f1a" stroke-width="0.8"/>
+    <circle cx="496" cy="170" r="5.5" fill="#ffffff"/>
+  </g>
+
+  <!-- Micro-USB Receptacle (left edge) -->
+  <rect x="0" y="75" width="38" height="60" rx="3" fill="#cfd5dc" stroke="#8b949e" stroke-width="1.2"/>
+  <rect x="0" y="80" width="28" height="50" rx="2" fill="#e5e9ef"/>
+  <rect x="20" y="86" width="12" height="6" rx="1" fill="#9ca3af"/>
+  <rect x="20" y="118" width="12" height="6" rx="1" fill="#9ca3af"/>
+  <g fill="#d4af37">
+    <rect x="38" y="92" width="5" height="2.4" rx="0.4"/>
+    <rect x="38" y="97" width="5" height="2.4" rx="0.4"/>
+    <rect x="38" y="102" width="5" height="2.4" rx="0.4"/>
+    <rect x="38" y="107" width="5" height="2.4" rx="0.4"/>
+    <rect x="38" y="112" width="5" height="2.4" rx="0.4"/>
+  </g>
+
   <!-- Onboard Green LED -->
-  <rect x="156" y="24" width="8" height="5" rx="1" fill="#d0d7de"/>
-  <rect x="158" y="24.8" width="4" height="3.4" rx="0.4" fill="#33ff33"/>
-  <text x="160" y="21" font-family="sans-serif" font-weight="bold" font-size="5" fill="#ffffff" text-anchor="middle">LED</text>
-  <!-- BOOTSEL Button -->
-  <path d="M36.484 35.984V68.62m-23.706 0V35.985" fill="none" stroke="#fff" stroke-width="1.59"/>
-  <path d="M34.343 64.735v6.993H27.35v-6.993h6.993zm0-31.859v6.993H27.35v-6.993h6.993zM21.91 64.735v6.993h-6.992v-6.993h6.992zm0-31.859v6.993h-6.992v-6.993h6.992zm1.773 20.844c2.131-.001 3.885-1.754 3.886-3.885-.001-2.131-1.755-3.884-3.886-3.885a3.905 3.905 0 00-3.885 3.885 3.905 3.905 0 003.885 3.885z" fill="#9a916c"/>
-  <path d="M28.907 65.9v3.886h3.884V65.9h3.495V38.703h-3.495V34.82h-3.884v3.884h-8.55V34.82h-3.884v3.884h-3.498v27.198h3.498v3.885h3.884V65.9h8.55z" fill="#dcdcdc" fill-rule="nonzero"/>
-  <circle cx="52.302" cy="-24.631" r="6.798" fill="#1e1e1e" transform="rotate(90)"/>
-  <!-- Micro-USB Connector -->
-  <path d="M36.286 37.538v1.554H12.975v-1.554h23.311zm0 27.974v1.554H12.975v-1.554h23.311zM182.266 90.291V28.13h10.88v62.16l-10.88.001z" fill="#b4b4b4"/>
-  <path d="M162.647 59.987v-1.554h9.325v1.554h-9.325zm0-5.052v-1.554h9.325v1.554h-9.325zm0-5.049v-1.554h9.325v1.554h-9.325zm0 15.151v-1.555h9.325v1.555h-9.325zm0 5.052v-1.555h9.325v1.555h-9.325z" fill="#dcdcdc"/>
-  <path d="M166.729 78.636V39.785h1.943v38.85l-1.943.001z" fill="#b4b4b4"/>
-  <path d="M167.502 78.636V39.785h8.157v38.85l-8.157.001z"/>
-  <path d="M172.167 43.669v6.217h1.944v3.884h-6.996v10.88h6.996v3.884h-1.944v6.217h-5.828v13.986h37.297V29.683H166.34V43.67h5.828l-.001-.001z" fill="#dcdcdc" fill-rule="nonzero"/>
-  <path d="M195.868 79.8l-11.656-.775V75.14l11.656-.779V79.8zm0-35.742l-11.656-.776v-3.887l11.656-.775v5.438z" fill-rule="nonzero"/>
-  <path d="M208.296 85.629l-4.66 1.554V31.237l4.663 1.555-.003 52.837z" fill="#f0f0f0" fill-rule="nonzero"/>
-  <path d="M208.296 90.291l-4.66-1.554v-1.554l4.66 1.554v1.554zm.003-60.608l-4.663 1.554v-1.554l4.663-1.554v1.554z" fill="#b4b4b4" fill-rule="nonzero"/>
-  <path d="M14.982 83.868h-1.059l-2.137-3.31h-.94v3.31H10v-7.285h2.06c.691 0 1.238.168 1.639.504.4.336.601.803.601 1.402 0 .443-.146.838-.438 1.184-.293.346-.696.58-1.208.705l2.328 3.49zm-4.136-4.048h1.069c.448 0 .81-.12 1.09-.364.279-.242.418-.548.418-.916 0-.813-.496-1.219-1.487-1.219h-1.09v2.499zm9.546 4.048h-3.804v-7.285h3.773v.738h-2.927v2.257h2.814v.738h-2.814v2.813h2.958v.739zm5.942-6.478a3.815 3.815 0 00-1.233-.223c-.44 0-.8.1-1.077.301-.277.202-.416.488-.416.86 0 .44.363.828 1.09 1.162.537.248.892.42 1.066.516.174.097.35.229.529.397.179.17.322.368.43.597.11.229.164.486.164.772 0 .709-.239 1.259-.716 1.649-.476.391-1.038.586-1.685.586-.627 0-1.176-.123-1.647-.372l.175-.728c.555.251 1.038.377 1.452.377.481 0 .867-.125 1.158-.374.29-.25.436-.593.436-1.03 0-.323-.094-.598-.283-.823-.19-.226-.539-.455-1.048-.69-.523-.24-.862-.405-1.015-.492a2.166 2.166 0 01-.456-.364 1.594 1.594 0 01-.475-1.152c0-.602.216-1.072.65-1.41.433-.336.982-.505 1.647-.505.485 0 .967.074 1.446.222l-.192.723v.001zm6.748 6.478h-3.805v-7.285h3.774v.738h-2.927v2.257h2.813v.738h-2.813v2.813h2.958v.739zm7.068-6.598h-2.246v6.598h-.842V77.27h-2.256v-.687h5.344v.687z" fill="#fff" fill-rule="nonzero"/>
+  <rect x="50" y="45" width="12" height="7" rx="1" fill="#d0d7de" stroke="#8b949e" stroke-width="0.6"/>
+  <rect x="52.5" y="46.2" width="7" height="4.6" rx="0.5" fill="#33ff33"/>
+  <text x="56" y="41" font-family="sans-serif" font-weight="bold" font-size="6.5" fill="#ffffff" text-anchor="middle">LED</text>
+
+  <!-- BOOTSEL Tactile Switch -->
+  <rect x="84" y="47" width="34" height="26" rx="2.5" fill="#d0d7de" stroke="#8b949e" stroke-width="1"/>
+  <rect x="89" y="51" width="24" height="18" rx="2" fill="#e6eaef"/>
+  <circle cx="101" cy="60" r="6.5" fill="#ffffff" stroke="#b0b8c2" stroke-width="0.8"/>
+  <text x="101" y="83" font-family="sans-serif" font-weight="bold" font-size="6.5" fill="#ffffff" text-anchor="middle">BOOTSEL</text>
+
+  <!-- SMPS Inductor & Power Components -->
+  <rect x="52" y="128" width="22" height="22" rx="2.5" fill="#2c3038" stroke="#4b5563" stroke-width="1"/>
+  <circle cx="63" cy="139" r="6" fill="#3b4252"/>
+  <rect x="86" y="132" width="14" height="14" rx="1.5" fill="#1b1e23" stroke="#374151" stroke-width="0.8"/>
+
+  <!-- QSPI Flash IC -->
+  <rect x="136" y="86" width="24" height="34" rx="2" fill="#181b20" stroke="#374151" stroke-width="0.9"/>
+  <circle cx="141" cy="91" r="1.5" fill="#9ca3af"/>
+  <text x="148" y="106" font-family="sans-serif" font-size="5.2" fill="#9ca3af" text-anchor="middle">FLASH</text>
+
+  <!-- RP2350 Dual Cortex-M33 QFN-60 SoC (center) -->
+  <g>
+    <rect x="184" y="77" width="56" height="56" rx="2.5" fill="#181b20" stroke="#374151" stroke-width="1.2"/>
+    <circle cx="191" cy="84" r="1.8" fill="#9ca3af"/>
+    <text x="212" y="101" font-family="sans-serif" font-weight="bold" font-size="10" fill="#e5e7eb" text-anchor="middle">RP2350</text>
+    <text x="212" y="114" font-family="sans-serif" font-size="7" fill="#9ca3af" text-anchor="middle">ARM M33</text>
+  </g>
+
+  <!-- CYW43439 RF Metal Shield Can -->
+  <g>
+    <rect x="278" y="54" width="106" height="102" rx="4" fill="#cfd5dc" stroke="#8b949e" stroke-width="1.3"/>
+    <rect x="284" y="60" width="94" height="90" rx="2.5" fill="#e2e6ec"/>
+    <text x="331" y="99" font-family="sans-serif" font-weight="bold" font-size="11" fill="#374151" text-anchor="middle">Raspberry Pi</text>
+    <text x="331" y="114" font-family="sans-serif" font-weight="bold" font-size="9.5" fill="#4b5563" text-anchor="middle">RM2 / CYW43439</text>
+    <text x="331" y="128" font-family="sans-serif" font-size="7" fill="#6b7280" text-anchor="middle">Wi-Fi • BLE 5.2</text>
+  </g>
+
+  <!-- PCB Cavity Antenna (right side) -->
+  <rect x="404" y="68" width="66" height="74" rx="3" fill="#0c552b" stroke="#22c55e" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <path d="M412 126 V84 H424 V120 H436 V84 H448 V120 H460 V84" fill="none" stroke="#d4af37" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="miter"/>
+
+  <!-- Silkscreen Branding -->
+  <text x="212" y="55" font-family="sans-serif" font-weight="bold" font-size="10.5" fill="#ffffff" text-anchor="middle">Raspberry Pi Pico 2 W</text>
+
+  <!-- 3-pin SWD Debug Header (between RP2350 and Shield) -->
+  <g fill="#d4af37" stroke="#9e7f1a" stroke-width="0.7">
+    <circle cx="258" cy="90" r="4.5"/><circle cx="258" cy="90" r="2.3" fill="#ffffff" stroke="none"/>
+    <circle cx="258" cy="105" r="4.5"/><circle cx="258" cy="105" r="2.3" fill="#ffffff" stroke="none"/>
+    <circle cx="258" cy="120" r="4.5"/><circle cx="258" cy="120" r="2.3" fill="#ffffff" stroke="none"/>
+  </g>
+
+  <!-- Top Row Castellated + Through-Hole Pads (Pins 40..21, y=14) -->
+  <g fill="#d4af37" stroke="#9e7f1a" stroke-width="0.8">
+    <circle cx="28" cy="14" r="7"/><circle cx="28" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="52" cy="14" r="7"/><circle cx="52" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="76" cy="14" r="7"/><circle cx="76" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="100" cy="14" r="7"/><circle cx="100" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="124" cy="14" r="7"/><circle cx="124" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="148" cy="14" r="7"/><circle cx="148" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="172" cy="14" r="7"/><circle cx="172" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="196" cy="14" r="7"/><circle cx="196" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="220" cy="14" r="7"/><circle cx="220" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="244" cy="14" r="7"/><circle cx="244" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="268" cy="14" r="7"/><circle cx="268" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="292" cy="14" r="7"/><circle cx="292" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="316" cy="14" r="7"/><circle cx="316" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="340" cy="14" r="7"/><circle cx="340" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="364" cy="14" r="7"/><circle cx="364" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="388" cy="14" r="7"/><circle cx="388" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="412" cy="14" r="7"/><circle cx="412" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="436" cy="14" r="7"/><circle cx="436" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="460" cy="14" r="7"/><circle cx="460" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="484" cy="14" r="7"/><circle cx="484" cy="14" r="3.8" fill="#ffffff" stroke="none"/>
+  </g>
+  <g font-family="sans-serif" font-size="5.2" fill="#ffffff" text-anchor="middle">
+    <text x="28" y="29">VBUS</text>
+    <text x="52" y="29">VSYS</text>
+    <text x="76" y="29">GND</text>
+    <text x="100" y="29">3V_EN</text>
+    <text x="124" y="29">3V3</text>
+    <text x="148" y="29">VREF</text>
+    <text x="172" y="29">GP28</text>
+    <text x="196" y="29">GND</text>
+    <text x="220" y="29">GP27</text>
+    <text x="244" y="29">GP26</text>
+    <text x="268" y="29">RUN</text>
+    <text x="292" y="29">GP22</text>
+    <text x="316" y="29">GND</text>
+    <text x="340" y="29">GP21</text>
+    <text x="364" y="29">GP20</text>
+    <text x="388" y="29">GP19</text>
+    <text x="412" y="29">GP18</text>
+    <text x="436" y="29">GND</text>
+    <text x="460" y="29">GP17</text>
+    <text x="484" y="29">GP16</text>
+  </g>
+
+  <!-- Bottom Row Castellated + Through-Hole Pads (Pins 1..20, y=196) -->
+  <g fill="#d4af37" stroke="#9e7f1a" stroke-width="0.8">
+    <circle cx="28" cy="196" r="7"/><circle cx="28" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="52" cy="196" r="7"/><circle cx="52" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="76" cy="196" r="7"/><circle cx="76" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="100" cy="196" r="7"/><circle cx="100" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="124" cy="196" r="7"/><circle cx="124" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="148" cy="196" r="7"/><circle cx="148" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="172" cy="196" r="7"/><circle cx="172" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="196" cy="196" r="7"/><circle cx="196" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="220" cy="196" r="7"/><circle cx="220" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="244" cy="196" r="7"/><circle cx="244" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="268" cy="196" r="7"/><circle cx="268" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="292" cy="196" r="7"/><circle cx="292" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="316" cy="196" r="7"/><circle cx="316" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="340" cy="196" r="7"/><circle cx="340" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="364" cy="196" r="7"/><circle cx="364" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="388" cy="196" r="7"/><circle cx="388" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="412" cy="196" r="7"/><circle cx="412" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="436" cy="196" r="7"/><circle cx="436" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="460" cy="196" r="7"/><circle cx="460" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+    <circle cx="484" cy="196" r="7"/><circle cx="484" cy="196" r="3.8" fill="#ffffff" stroke="none"/>
+  </g>
+  <g font-family="sans-serif" font-size="5.2" fill="#ffffff" text-anchor="middle">
+    <text x="28" y="185">GP0</text>
+    <text x="52" y="185">GP1</text>
+    <text x="76" y="185">GND</text>
+    <text x="100" y="185">GP2</text>
+    <text x="124" y="185">GP3</text>
+    <text x="148" y="185">GP4</text>
+    <text x="172" y="185">GP5</text>
+    <text x="196" y="185">GND</text>
+    <text x="220" y="185">GP6</text>
+    <text x="244" y="185">GP7</text>
+    <text x="268" y="185">GP8</text>
+    <text x="292" y="185">GP9</text>
+    <text x="316" y="185">GND</text>
+    <text x="340" y="185">GP10</text>
+    <text x="364" y="185">GP11</text>
+    <text x="388" y="185">GP12</text>
+    <text x="412" y="185">GP13</text>
+    <text x="436" y="185">GND</text>
+    <text x="460" y="185">GP14</text>
+    <text x="484" y="185">GP15</text>
+  </g>
 </svg>

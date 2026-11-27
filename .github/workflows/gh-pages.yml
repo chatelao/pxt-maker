@@ -1,4 +1,4 @@
-name: Deploy MakeCode XIAO ESP32-C6 to GitHub Pages
+name: Deploy MakeCode Maker to GitHub Pages
 
 on:
   push:
@@ -46,6 +46,11 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Install ARM GCC toolchain for RP2350 (Pico 2 / Pico 2 W)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib cmake python-is-python3
+
       - name: Install & build pxt (CLI + Webapp)
         working-directory: pxt
         run: |
@@ -66,7 +71,7 @@ jobs:
       - name: Pull ESP-IDF v5.5.6 Docker image
         run: docker pull espressif/idf:v5.5.6
 
-      - name: Pre-compile XIAO ESP32-C6 firmware templates (core + NeoPixel)
+      - name: Pre-compile XIAO ESP32-C6 and Pico 2 / Pico 2 W firmware templates
         working-directory: pxt-maker
         env:
           PXT_FORCE_LOCAL: "1"
@@ -76,6 +81,8 @@ jobs:
           node -e 'const fs=require("fs"); const t=JSON.parse(fs.readFileSync("pxtarget.json","utf8")); t.versions={target:"0.15.80",pxt:"13.3.3"}; t.bundledpkgs={}; fs.writeFileSync("built/target.json", JSON.stringify(t, null, 2));'
           (cd libs/seeed-xiao-esp32c6 && node ../../../pxt/built/pxt.js build --localbuild --hwvariant esp32c6)
           (cd tests/e2e-xiao-esp32c6-neopixel && node ../../../pxt/built/pxt.js build --localbuild --hwvariant esp32c6)
+          (cd libs/rpi-pico2 && PXT_NODOCKER=force node ../../../pxt/built/pxt.js build --localbuild --hwvariant rp2350)
+          (cd libs/rpi-pico2-w && PXT_NODOCKER=force node ../../../pxt/built/pxt.js build --localbuild --hwvariant rp2350)
 
       - name: Build static MakeCode GitHub Pages bundle
         working-directory: pxt-maker
