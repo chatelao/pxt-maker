@@ -364,6 +364,9 @@
             }
         },
         "esp32": {
+            "runtime": {
+                "numCores": 2
+            },
             "compile": {
                 "hasHex": true,
                 "useESP": true,
@@ -425,6 +428,9 @@
             }
         },
         "rp2040": {
+            "runtime": {
+                "numCores": 2
+            },
             "compile": {
                 "hasHex": true,
                 "openocdScript": "???",
