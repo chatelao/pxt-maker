@@ -1,0 +1,7 @@
+{
+    "name": "hil-zigbee-router",
+    "dependencies": {
+        "seeed-xiao-esp32c6": "file:../../../../libs/seeed-xiao-esp32c6"
+    },
+    "files": ["main.ts"]
+}

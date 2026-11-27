@@ -1,0 +1,7 @@
+{
+    "name": "hil-ble-beacon-tx",
+    "dependencies": {
+        "seeed-xiao-esp32c6": "file:../../../../libs/seeed-xiao-esp32c6"
+    },
+    "files": ["main.ts"]
+}
