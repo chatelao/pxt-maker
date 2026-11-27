@@ -1,0 +1,11 @@
+{
+    "name": "xiao-esp32c6-intercomm-e2e",
+    "dependencies": {
+        "seeed-xiao-esp32c6": "file:../../libs/seeed-xiao-esp32c6"
+    },
+    "description": "Seeed Studio XIAO ESP32-C6 Radio (ESP-NOW) and Wi-Fi Intercomm blocks example",
+    "files": [
+        "main.blocks",
+        "main.ts"
+    ]
+}

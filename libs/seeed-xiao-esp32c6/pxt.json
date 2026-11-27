@@ -17,7 +17,9 @@
         "settings---esp32": "file:../settings---esp32",
         "wifi---esp32": "file:../wifi---esp32",
         "mqtt": "file:../mqtt",
-        "christmas-tree": "file:../christmas-tree"
+        "christmas-tree": "file:../christmas-tree",
+        "radio": "file:../radio",
+        "radio-broadcast": "file:../radio-broadcast"
     },
     "public": true,
     "weight": 1005,
@@ -27,6 +29,7 @@
         "pind1",
         "buttona",
         "wifi",
+        "radio",
         "serial",
         "i2c",
         "spi"

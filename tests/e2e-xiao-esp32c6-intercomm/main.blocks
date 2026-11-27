@@ -1,0 +1,81 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="pxt-on-start" id="on_start" x="20" y="20">
+    <statement name="HANDLER">
+      <block type="radio_set_group" id="set_grp">
+        <value name="ID">
+          <shadow type="math_number" id="grp_num">
+            <field name="NUM">42</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="radio_datagram_send" id="send_num">
+            <value name="value">
+              <shadow type="math_number" id="num_val">
+                <field name="NUM">123</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="radio_datagram_send_value" id="send_kv">
+                <value name="name">
+                  <shadow type="text" id="kv_name">
+                    <field name="TEXT">temp</field>
+                  </shadow>
+                </value>
+                <value name="value">
+                  <shadow type="math_number" id="kv_val">
+                    <field name="NUM">25</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="radio_datagram_send_string" id="send_str">
+                    <value name="msg">
+                      <shadow type="text" id="str_val">
+                        <field name="TEXT">hello-c6</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="radioBroadcastMessage" id="bcast_msg">
+                        <value name="msg">
+                          <shadow type="radioMessageCode" id="msg_code_1">
+                            <field name="msg">message1</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="radio_on_string_drag" id="on_rx_str" x="20" y="260">
+    <statement name="HANDLER">
+      <block type="serial_writeline" id="log_rx">
+        <value name="text">
+          <shadow type="text" id="txt_rx">
+            <field name="TEXT">RX_STR</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="radioOnMessageReceived" id="on_rx_msg" x="20" y="380">
+    <value name="msg">
+      <shadow type="radioMessageCode" id="msg_code_2">
+        <field name="msg">message1</field>
+      </shadow>
+    </value>
+    <statement name="HANDLER">
+      <block type="serial_writeline" id="log_msg">
+        <value name="text">
+          <shadow type="text" id="txt_msg">
+            <field name="TEXT">RX_MSG</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

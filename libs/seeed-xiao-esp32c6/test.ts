@@ -43,7 +43,7 @@ pins.spiFrequency(1000000);
 pins.spiMode(0);
 let spiRx = pins.spiWrite(0x9f);
 
-// 9. Wi-Fi 6, RF Antenna Switch (GPIO3/GPIO14) & MQTT
+// 9. Wi-Fi 6, RF Antenna Switch (GPIO3/GPIO14), UDP & MQTT
 _wifi.setExternalAntenna(false);
 let wifiCtrl = net.instance();
 let mqttClient = new mqtt.Client({ host: "test.mosquitto.org", port: 1883, clientId: "xiao-c6-test" });
@@ -52,3 +52,28 @@ mqttClient.on("message", (arg?: string | mqtt.IMessage) => {
         serial.writeLine(arg.topic + ": " + arg.content.toString());
     }
 });
+
+// 10. Peer-to-Peer Radio (ESP-NOW) & Broadcast Intercomm
+radio.setGroup(42);
+radio.setTransmitPower(7);
+radio.setFrequencyBand(10);
+radio.onReceivedNumber((n) => {
+    serial.writeValue("rxNum", n);
+});
+radio.onReceivedValue((name, val) => {
+    serial.writeValue(name, val);
+});
+radio.onReceivedString((s) => {
+    serial.writeLine("rxStr: " + s);
+});
+radio.onReceivedMessage(1, () => {
+    serial.writeLine("rxMsg1");
+});
+radio.sendNumber(123);
+radio.sendValue("temp", 25.5);
+radio.sendString("hello-c6");
+radio.sendBuffer(Buffer.fromUTF8("raw"));
+radio.sendMessage(1);
+radio.off();
+radio.on();
+

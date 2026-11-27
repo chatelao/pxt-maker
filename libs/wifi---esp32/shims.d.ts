@@ -13,6 +13,10 @@ declare namespace _wifi {
     //% promise shim=_wifi::socketConnectTCP
     function socketConnectTCP(fd: int32, host: string, port: int32): int32;
 
+    /** Connect/bind with UDP (supports broadcast) */
+    //% promise shim=_wifi::socketConnectUDP
+    function socketConnectUDP(fd: int32, host: string, port: int32): int32;
+
     /** Write to socket */
     //% promise shim=_wifi::socketWrite
     function socketWrite(fd: int32, data: Buffer): int32;
