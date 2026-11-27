@@ -75,6 +75,46 @@ declare namespace _wifi {
     //% shim=_wifi::rssi
     function rssi(): int32;
 
+    /** Start a WiFi access point (SoftAP). Password must be empty (open) or 8..63 chars (WPA2). */
+    //% shim=_wifi::startAP
+    function startAP(ssid: string, password: string, channel: int32, maxConnections: int32): int32;
+
+    /** Stop the WiFi access point (SoftAP). */
+    //% shim=_wifi::stopAP
+    function stopAP(): void;
+
+    /** Check if the WiFi access point is enabled. */
+    //% shim=_wifi::isAPEnabled
+    function isAPEnabled(): boolean;
+
+    /** Return AP ipv4 address, netmask, and gateway. */
+    //% shim=_wifi::apIpInfo
+    function apIpInfo(): Buffer;
+
+    /** Return the number of stations currently connected to the access point. */
+    //% shim=_wifi::apStationCount
+    function apStationCount(): int32;
+
+    /** Start the embedded Web Dashboard server. */
+    //% shim=_wifi::dashboardStart
+    function dashboardStart(title: string, captivePortal: boolean): void;
+
+    /** Stop the embedded Web Dashboard server and captive-portal DNS. */
+    //% shim=_wifi::dashboardStop
+    function dashboardStop(): void;
+
+    /** Clear all registered Web Dashboard widgets. */
+    //% shim=_wifi::dashboardClear
+    function dashboardClear(): void;
+
+    /** Register or update a Web Dashboard widget. */
+    //% shim=_wifi::dashboardUpsertWidget
+    function dashboardUpsertWidget(id: int32, kind: int32, label: string, minVal: int32, maxVal: int32, value: int32, text: string): void;
+
+    /** Pop the next queued (widgetId, value) event from the Web Dashboard as an 8-byte buffer, or empty buffer if none. */
+    //% shim=_wifi::dashboardNextEvent
+    function dashboardNextEvent(): Buffer;
+
     /** Select external U.FL antenna (true) or onboard ceramic antenna (false). */
     //% shim=_wifi::setExternalAntenna
     function setExternalAntenna(external: boolean): void;
