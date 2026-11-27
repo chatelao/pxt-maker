@@ -62,6 +62,7 @@
         "libs/net",
         "libs/net-game",
         "libs/wifi---esp32",
+        "libs/bluetooth---esp32",
         "libs/mqtt",
         "libs/azureiot",
         "libs/settings",

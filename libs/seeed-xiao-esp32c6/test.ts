@@ -77,3 +77,22 @@ radio.sendMessage(1);
 radio.off();
 radio.on();
 
+// 11. Bluetooth 5.3 LE (NimBLE UART Service, Beacons & Scanner)
+bluetooth.setDeviceName("XIAO-C6-Test");
+bluetooth.onConnected(() => {
+    bluetooth.uartWriteString("connected");
+});
+bluetooth.onUartDataReceived(() => {
+    let msg = bluetooth.uartReadString();
+    serial.writeLine("BLE_UART: " + msg);
+});
+bluetooth.startUartService();
+bluetooth.advertiseString("c6-beacon", 100);
+bluetooth.stopAdvertising();
+bluetooth.onAdvertisementReceived((data, rssi) => {
+    serial.writeLine("BLE_ADV: " + data.toString() + " " + rssi);
+});
+bluetooth.startScanning();
+bluetooth.stopScanning();
+
+
