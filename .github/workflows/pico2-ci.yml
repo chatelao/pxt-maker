@@ -11,6 +11,11 @@ on:
       - master
   workflow_dispatch:
 
+# Vendored CODAL (RP2350) declares cmake_minimum_required < 3.5, which CMake 4.x on
+# ubuntu-latest rejects. Opt in to the documented compatibility override.
+env:
+  CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+
 jobs:
   emulate-pico2:
     runs-on: ubuntu-latest
