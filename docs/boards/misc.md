@@ -31,6 +31,20 @@
 
 ---
 
+* name: Raspberry Pi Pico 2 (RP2350)
+* url: /boards/rpi-pico2
+* cardType: template
+* imageUrl: /static/libs/rpi-pico2.svg
+
+---
+
+* name: Raspberry Pi Pico 2 W (RP2350)
+* url: /boards/rpi-pico2-w
+* cardType: template
+* imageUrl: /static/libs/rpi-pico2-w.svg
+
+---
+
 * name: RedBear BLE NANO 2
 * url: /boards/redbear-ble-nano
 * cardType: template

@@ -1,0 +1,71 @@
+name: Pico 2 & Pico 2 W (RP2350) CI Emulation Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  emulate-pico2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pxt-maker
+        uses: actions/checkout@v4
+        with:
+          path: pxt-maker
+
+      - name: Checkout chatelao/pxt
+        uses: actions/checkout@v4
+        with:
+          repository: chatelao/pxt
+          ref: master
+          path: pxt
+
+      - name: Checkout chatelao/pxt-common-packages
+        uses: actions/checkout@v4
+        with:
+          repository: chatelao/pxt-common-packages
+          ref: master
+          path: pxt-common-packages
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install & build pxt
+        working-directory: pxt
+        run: |
+          npm install
+          npm run build
+
+      - name: Install & link pxt-maker dependencies
+        working-directory: pxt-maker
+        run: |
+          npm install --legacy-peer-deps
+          rm -rf node_modules/pxt-core node_modules/pxt-common-packages
+          ln -s ../../pxt node_modules/pxt-core
+          ln -s ../../pxt-common-packages node_modules/pxt-common-packages
+          mkdir -p ../pxt-common-packages/node_modules
+          ln -sfn ../../pxt ../pxt-common-packages/node_modules/pxt-core
+          ln -sfn ../../pxt/node_modules/typescript ../pxt-common-packages/node_modules/typescript
+
+      - name: Build pxt-maker simulator (pxsim)
+        working-directory: pxt-maker
+        run: |
+          mkdir -p built
+          node_modules/.bin/tsc -p node_modules/pxt-common-packages/sim
+          cp node_modules/pxt-common-packages/built/common-sim.js built/common-sim.js
+          cp node_modules/pxt-common-packages/built/common-sim.d.ts built/common-sim.d.ts
+          node_modules/.bin/tsc -p sim
+
+      - name: Run Pico 2 & Pico 2 W E2E Emulation Tests
+        working-directory: pxt-maker
+        run: |
+          node tests/e2e-pico2.js --skip-native

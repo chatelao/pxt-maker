@@ -1,0 +1,11 @@
+{
+    "name": "rpi-pico2-blink-e2e",
+    "dependencies": {
+        "rpi-pico2": "file:../../libs/rpi-pico2"
+    },
+    "description": "Raspberry Pi Pico 2 (RP2350) Blink and peripheral E2E example",
+    "files": [
+        "main.blocks",
+        "main.ts"
+    ]
+}

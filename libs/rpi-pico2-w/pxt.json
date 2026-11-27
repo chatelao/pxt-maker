@@ -1,0 +1,28 @@
+{
+    "name": "rpi-pico2-w",
+    "description": "Support for Raspberry Pi Pico 2 W (RP2350)",
+    "files": [
+        "README.md",
+        "device.d.ts",
+        "config.ts",
+        "board.json",
+        "board.svg"
+    ],
+    "core": true,
+    "compileServiceVariant": "rp2350",
+    "dependencies": {
+        "core---rp2350": "file:../core---rp2350"
+    },
+    "public": true,
+    "weight": 1003,
+    "features": [
+        "uf2",
+        "pinled",
+        "pind0",
+        "pind1",
+        "i2c",
+        "spi",
+        "serial",
+        "jacdac"
+    ]
+}

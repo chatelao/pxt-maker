@@ -1,0 +1,74 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="pxt-on-start" id="on_start" x="20" y="20">
+    <statement name="HANDLER">
+      <block type="device_set_analog_pin" id="pwm_init">
+        <field name="name">pins.P1</field>
+        <value name="value">
+          <shadow type="math_number" id="pwm_val">
+            <field name="NUM">512</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="forever" id="forever_loop" x="20" y="160">
+    <statement name="HANDLER">
+      <block type="device_set_digital_pin" id="led_on">
+        <field name="name">pins.LED</field>
+        <value name="value">
+          <shadow type="toggleHighLow" id="led_high">
+            <field name="state">true</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="device_set_digital_pin" id="p0_high">
+            <field name="name">pins.P0</field>
+            <value name="value">
+              <shadow type="toggleHighLow" id="p0_val_high">
+                <field name="state">true</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="device_pause" id="pause_on">
+                <value name="ms">
+                  <shadow type="math_number" id="ms_on">
+                    <field name="NUM">50</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_set_digital_pin" id="led_off">
+                    <field name="name">pins.LED</field>
+                    <value name="value">
+                      <shadow type="toggleHighLow" id="led_low">
+                        <field name="state">false</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_set_digital_pin" id="p0_low">
+                        <field name="name">pins.P0</field>
+                        <value name="value">
+                          <shadow type="toggleHighLow" id="p0_val_low">
+                            <field name="state">false</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="device_pause" id="pause_off">
+                            <value name="ms">
+                              <shadow type="math_number" id="ms_off">
+                                <field name="NUM">50</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

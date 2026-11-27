@@ -1,0 +1,76 @@
+{
+  "driveDisplayName": "RP2350",
+  "visual": {
+    "image": "pkg://board.svg",
+    "useCrocClips": false,
+    "width": 208.3,
+    "height": 118.4,
+    "pinDist": 15,
+    "pinBlocks": [],
+    "leds": [
+      {
+        "x": 156,
+        "y": 24,
+        "w": 8,
+        "h": 5,
+        "color": "#33ff33",
+        "label": "LED"
+      }
+    ],
+    "touchPads": [],
+    "buttons": [],
+    "reset": {
+      "x": 17.83250718937794,
+      "y": 45.50404575993516,
+      "w": 13.596367783800709,
+      "h": 13.596390332336691
+    }
+  },
+  "gpioPinMap": {
+    "P0": "P0", "D0": "P0", "TX": "P0",
+    "P1": "P1", "D1": "P1", "RX": "P1",
+    "P2": "P2",
+    "P3": "P3",
+    "P4": "P4", "SDA": "P4",
+    "P5": "P5", "SCL": "P5",
+    "P6": "P6",
+    "P7": "P7",
+    "P8": "P8",
+    "P9": "P9",
+    "P10": "P10",
+    "P11": "P11",
+    "P12": "P12",
+    "P13": "P13",
+    "P14": "P14",
+    "P15": "P15",
+    "P16": "P16", "MISO": "P16",
+    "P17": "P17", "CS": "P17",
+    "P18": "P18", "SCK": "P18",
+    "P19": "P19", "MOSI": "P19",
+    "P20": "P20",
+    "P21": "P21",
+    "P22": "P22",
+    "P25": "LED", "LED": "LED",
+    "P26": "P26", "A0": "P26",
+    "P27": "P27", "A1": "P27",
+    "P28": "P28", "A2": "P28"
+  },
+  "groundPins": ["GND"],
+  "threeVoltPins": ["_3V"],
+  "i2cPins": {
+    "SDA": "P4",
+    "SCL": "P5"
+  },
+  "spiPins": {
+    "MOSI": "P19",
+    "MISO": "P16",
+    "SCK": "P18"
+  },
+  "onboardComponents": [],
+  "marginWhenBreadboarding": [
+    0,
+    0,
+    80,
+    0
+  ]
+}

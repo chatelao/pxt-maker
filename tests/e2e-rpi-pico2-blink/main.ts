@@ -1,0 +1,10 @@
+pins.P1.analogWrite(512)
+let adcVal = pins.P26.analogRead()
+forever(function () {
+    pins.LED.digitalWrite(true)
+    pins.P0.digitalWrite(true)
+    pause(50)
+    pins.LED.digitalWrite(false)
+    pins.P0.digitalWrite(false)
+    pause(50)
+})
